@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monster: one
+  item: one
+  amount: 1
+  rare: false
+
+two:
+  monster: two
+  item: two
+  amount: 1
+  rare: false
