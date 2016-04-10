@@ -27,6 +27,7 @@ group :development, :test do
   gem 'railroady'
   gem 'awesome_print'
   gem 'hirb'
+  gem 'annotate'
 end
 
 group :development do
