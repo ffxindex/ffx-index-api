@@ -28,6 +28,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'hirb'
   gem 'annotate'
+  gem 'seed_dump'
 end
 
 group :development do

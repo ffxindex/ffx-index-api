@@ -11,29 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410215640) do
+ActiveRecord::Schema.define(version: 20160411153808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "ability_type"
     t.integer  "item_id"
     t.integer  "item_amount"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "effect"
   end
 
   add_index "abilities", ["item_id"], name: "index_abilities_on_item_id", using: :btree
-
-  create_table "armor_abilities", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "value"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "bribe_drops", force: :cascade do |t|
     t.integer  "monster_id"
@@ -50,8 +43,9 @@ ActiveRecord::Schema.define(version: 20160410215640) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.text     "effect"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "effect_type"
   end
 
   create_table "kill_drops", force: :cascade do |t|
@@ -74,9 +68,12 @@ ActiveRecord::Schema.define(version: 20160410215640) do
 
   create_table "monsters", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
+
+  add_index "monsters", ["location_id"], name: "index_monsters_on_location_id", using: :btree
 
   create_table "steal_drops", force: :cascade do |t|
     t.integer  "monster_id"
@@ -90,19 +87,12 @@ ActiveRecord::Schema.define(version: 20160410215640) do
   add_index "steal_drops", ["item_id"], name: "index_steal_drops_on_item_id", using: :btree
   add_index "steal_drops", ["monster_id"], name: "index_steal_drops_on_monster_id", using: :btree
 
-  create_table "weapon_abilities", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "value"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   add_foreign_key "abilities", "items"
   add_foreign_key "bribe_drops", "items"
   add_foreign_key "bribe_drops", "monsters"
   add_foreign_key "kill_drops", "items"
   add_foreign_key "kill_drops", "monsters"
+  add_foreign_key "monsters", "locations"
   add_foreign_key "steal_drops", "items"
   add_foreign_key "steal_drops", "monsters"
 end
