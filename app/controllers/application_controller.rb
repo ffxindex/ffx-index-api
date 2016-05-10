@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
-  before_filter :set_format
-  before_action :cache_page
+  before_action :cache_page, :set_format
 
   def cache_page
     expires_in 1.month, public: true

@@ -36,7 +36,7 @@ Rails.application.configure do
 
     config.action_mailer.perform_caching = false
 
-    config.cache_store = :null_store
+    config.cache_store = :memory_store
   end
 
   # Don't care if the mailer can't send.
