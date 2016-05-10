@@ -15,20 +15,26 @@ gem 'rack-cache'
 
 gem 'rails_12factor'
 
+# For rate limiting and banning
 gem 'rack-attack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "rails-controller-testing", :git => "https://github.com/rails/rails-controller-testing"
+  gem 'rspec', '~> 3.5.0.beta1'
+  gem 'rspec-core', '~> 3.5.0.beta1'
+  gem 'rspec-rails', '~> 3.5.0.beta1'
+  gem 'guard-rspec', '~> 4.6', require: false
+
   gem 'byebug'
   gem 'railroady'
   gem 'awesome_print'
   gem 'hirb'
   gem 'annotate'
   gem 'seed_dump'
-  gem 'bullet'
+
 end
 
 group :development do
