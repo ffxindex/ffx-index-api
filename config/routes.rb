@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
+      get '/all' => 'combinations#index', as: :all_entries
+
       scope 'abilities' do
         get '/' => 'abilities#index', as: :all_abilities
         get '/:id' => 'abilities#show', as: :one_ability
@@ -15,12 +17,12 @@ Rails.application.routes.draw do
 
       scope 'monsters' do
         get '/' => 'monsters#index', as: :all_monsters
-        get '/:id' => 'monsters#show', as: :one_monsters
+        get '/:id' => 'monsters#show', as: :one_monster
       end
 
       scope 'locations' do
         get '/' => 'locations#index', as: :all_locations
-        get '/:id' => 'locations#show', as: :one_locations
+        get '/:id' => 'locations#show', as: :one_location
       end
     end
   end

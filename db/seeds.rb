@@ -31,7 +31,7 @@ Location.create!([
   {name: "Via Purifico"},
   {name: "Moonflow"},
   {name: "Ruins of Zanarkand"},
-  {name: ""},
+  {name: "Unknown Location"},
   {name: "Mi'ihen Highroad, Mushroom Rock"},
   {name: "Djose Highroad and Temple, Moonflow, Mushroom Rock"},
   {name: "Mushroom Rock"},

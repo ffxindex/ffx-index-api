@@ -2,7 +2,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    render 'api/v1/items/index.json'
+    render 'api/v1/items/index.json' unless fresh_when @items
   end
 
   def show
@@ -12,7 +12,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def items_with_monsters
     @items = Item.preload(preload_hash).all
-    render 'api/v1/items/items_with_monsters.json'
+    render 'api/v1/items/items_with_monsters.json' unless fresh_when @items
   end
 
   private

@@ -1,7 +1,7 @@
 class Api::V1::AbilitiesController < ApplicationController
   def index
     @abilities = Ability.preload(:item).all
-    render 'api/v1/abilities/index.json'
+    render 'api/v1/abilities/index.json' unless fresh_when @abilities
   end
 
   def show

@@ -1,7 +1,7 @@
 class Api::V1::MonstersController < ApplicationController
   def index
     @monsters = Monster.preload(:location).all
-    render 'api/v1/monsters/index.json'
+    render 'api/v1/monsters/index.json' unless fresh_when @monsters
   end
 
   def show

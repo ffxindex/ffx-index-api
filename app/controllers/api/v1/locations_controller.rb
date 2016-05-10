@@ -1,7 +1,7 @@
 class Api::V1::LocationsController < ApplicationController
   def index
     @locations = Location.all
-    render 'api/v1/locations/index.json'
+    render 'api/v1/locations/index.json' unless fresh_when @locations
   end
 
   def show
