@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510043117) do
+ActiveRecord::Schema.define(version: 20160510194638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,25 @@ ActiveRecord::Schema.define(version: 20160510043117) do
     t.datetime "updated_at",   null: false
     t.string   "effect"
     t.string   "slug"
+    t.index ["item_id"], name: "index_abilities_on_item_id", using: :btree
   end
 
-  add_index "abilities", ["item_id"], name: "index_abilities_on_item_id", using: :btree
+  create_table "api_requests", force: :cascade do |t|
+    t.integer  "api_user_id"
+    t.string   "ip"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["api_user_id"], name: "index_api_requests_on_api_user_id", using: :btree
+  end
+
+  create_table "api_users", force: :cascade do |t|
+    t.string   "api_key"
+    t.string   "website"
+    t.string   "email"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "banned",     default: false
+  end
 
   create_table "bribe_drops", force: :cascade do |t|
     t.integer  "monster_id"
@@ -36,10 +52,9 @@ ActiveRecord::Schema.define(version: 20160510043117) do
     t.integer  "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_bribe_drops_on_item_id", using: :btree
+    t.index ["monster_id"], name: "index_bribe_drops_on_monster_id", using: :btree
   end
-
-  add_index "bribe_drops", ["item_id"], name: "index_bribe_drops_on_item_id", using: :btree
-  add_index "bribe_drops", ["monster_id"], name: "index_bribe_drops_on_monster_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -57,10 +72,9 @@ ActiveRecord::Schema.define(version: 20160510043117) do
     t.boolean  "rare",       default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["item_id"], name: "index_kill_drops_on_item_id", using: :btree
+    t.index ["monster_id"], name: "index_kill_drops_on_monster_id", using: :btree
   end
-
-  add_index "kill_drops", ["item_id"], name: "index_kill_drops_on_item_id", using: :btree
-  add_index "kill_drops", ["monster_id"], name: "index_kill_drops_on_monster_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -75,9 +89,8 @@ ActiveRecord::Schema.define(version: 20160510043117) do
     t.datetime "updated_at",  null: false
     t.integer  "location_id"
     t.string   "slug"
+    t.index ["location_id"], name: "index_monsters_on_location_id", using: :btree
   end
-
-  add_index "monsters", ["location_id"], name: "index_monsters_on_location_id", using: :btree
 
   create_table "steal_drops", force: :cascade do |t|
     t.integer  "monster_id"
@@ -86,12 +99,12 @@ ActiveRecord::Schema.define(version: 20160510043117) do
     t.boolean  "rare"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_steal_drops_on_item_id", using: :btree
+    t.index ["monster_id"], name: "index_steal_drops_on_monster_id", using: :btree
   end
 
-  add_index "steal_drops", ["item_id"], name: "index_steal_drops_on_item_id", using: :btree
-  add_index "steal_drops", ["monster_id"], name: "index_steal_drops_on_monster_id", using: :btree
-
   add_foreign_key "abilities", "items"
+  add_foreign_key "api_requests", "api_users"
   add_foreign_key "bribe_drops", "items"
   add_foreign_key "bribe_drops", "monsters"
   add_foreign_key "kill_drops", "items"
