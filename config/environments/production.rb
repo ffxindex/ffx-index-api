@@ -25,6 +25,7 @@ Rails.application.configure do
      allow_reload: false,
      allow_revalidate: false
 
+  config.exceptions_app = self.routes
 
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

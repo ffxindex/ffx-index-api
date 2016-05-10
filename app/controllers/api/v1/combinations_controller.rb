@@ -8,6 +8,5 @@ class Api::V1::CombinationsController < ApplicationController
 
     @results = monster + item + ability + location
     @results.sort!
-    render 'api/v1/combinations/index.json' unless fresh_when @results
   end
 end

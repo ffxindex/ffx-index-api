@@ -1,7 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
 
-  before_action :cache_page, only: [:items_with_monsters, "index"]
-
   def index
     @items = Item.all
     render 'api/v1/items/index.json'
@@ -9,11 +7,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def show
     @item = Item.preload(preload_hash).find_by_id_or_slug(params[:id])
-    # if @item
-      render 'api/v1/items/show.json'
-    # else
-    #   render plain: 404
-    # end
+    render 'api/v1/items/show.json'
   end
 
   def items_with_monsters
