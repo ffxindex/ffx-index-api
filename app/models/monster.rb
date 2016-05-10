@@ -3,4 +3,7 @@ class Monster < ApplicationRecord
   has_many :kill_drops
   has_many :steal_drops
   has_one :bribe_drop
+
+  before_save :generate_slug
+
 end

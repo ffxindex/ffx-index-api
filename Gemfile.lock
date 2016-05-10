@@ -44,6 +44,9 @@ GEM
     arel (7.0.0)
     awesome_print (1.6.1)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (8.2.4)
     concurrent-ruby (1.0.1)
     erubis (2.7.0)
@@ -52,6 +55,9 @@ GEM
       activesupport (>= 4.1.0)
     hirb (0.7.3)
     i18n (0.7.0)
+    jbuilder (2.4.1)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     json (1.8.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
@@ -66,6 +72,7 @@ GEM
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    multi_json (1.11.2)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -124,6 +131,7 @@ GEM
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uniform_notifier (1.9.0)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -134,8 +142,10 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
+  bullet
   byebug
   hirb
+  jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma
