@@ -12,10 +12,14 @@ Rails.application.configure do
   config.middleware.use Rack::Cache,
      verbose:     true,
      metastore:   'file:/var/cache/rack/meta',
-     entitystore: 'file:/var/cache/rack/body'
+     entitystore: 'file:/var/cache/rack/body',
+     allow_reload: false,
+     allow_revalidate: false
+
 
   # Show full error reports.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
+  config.exceptions_app = self.routes
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
