@@ -12,7 +12,8 @@ class Api::V1::ItemsController < ApplicationController
 
   def items_with_monsters
     @items = Item.preload(preload_hash).all
-    render 'api/v1/items/items_with_monsters.json' unless fresh_when @items
+    expires_in 1.month, public: true
+    render 'api/v1/items/items_with_monsters.json'
   end
 
   private

@@ -11,6 +11,7 @@ gem 'puma'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'rack-cache'
 
 gem 'rails_12factor'
 # Use Redis adapter to run Action Cable in production

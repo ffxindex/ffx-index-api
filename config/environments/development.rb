@@ -9,6 +9,10 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.middleware.use Rack::Cache,
+     verbose:     true,
+     metastore:   'file:/var/cache/rack/meta',
+     entitystore: 'file:/var/cache/rack/body'
 
   # Show full error reports.
   config.consider_all_requests_local = true
