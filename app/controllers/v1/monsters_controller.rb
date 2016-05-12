@@ -13,7 +13,8 @@ class V1::MonstersController < ApplicationController
     {
       bribe_drop: :item,
       kill_drops: :item,
-      steal_drops: :item
+      steal_drops: :item,
+      monster_drop_abilities: :ability
     }
   end
 end

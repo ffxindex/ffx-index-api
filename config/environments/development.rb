@@ -9,12 +9,12 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  config.middleware.use Rack::Cache,
-     verbose:     true,
-     metastore:   'file:/var/cache/rack/meta',
-     entitystore: 'file:/var/cache/rack/body',
-     allow_reload: false,
-     allow_revalidate: false
+  # config.middleware.use Rack::Cache,
+  #    verbose:     true,
+  #    metastore:   'file:/var/cache/rack/meta',
+  #    entitystore: 'file:/var/cache/rack/body',
+  #    allow_reload: false,
+  #    allow_revalidate: false
 
 
   # Show full error reports.
@@ -32,11 +32,13 @@ Rails.application.configure do
       'Cache-Control' => 'public, max-age=172800'
     }
   else
-    config.action_controller.perform_caching = true
+    # config.action_controller.perform_caching = true
+    config.action_controller.perform_caching = false
 
     config.action_mailer.perform_caching = false
 
-    config.cache_store = :memory_store
+    config.cache_store = :null_store
+    # config.cache_store = :memory_store
   end
 
   # Don't care if the mailer can't send.

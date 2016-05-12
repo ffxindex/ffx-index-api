@@ -22,6 +22,11 @@ Rails.application.routes.draw do
       get '/(key/:api_key)' => 'locations#index', as: :all_locations
       get '/:id(/key/:api_key)' => 'locations#show', as: :one_location
     end
+
+    scope 'mixes' do
+      get '/(key/:api_key)' => 'mixes#index', as: :all_mixes
+      get '/:id(/key/:api_key)' => 'mixes#show', as: :one_mix
+    end
   end
 
   %w( 403 404 422 500 503 ).each do |code|
