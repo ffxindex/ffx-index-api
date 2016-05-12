@@ -9,6 +9,14 @@ json.set! :data do
     json.slug @item.slug
   end
 
+  json.set! :mixes do
+    json.array! @item.get_mixes do |mix_item|
+      json.name mix_item.mix.name
+      json.id mix_item.mix.id
+      json.slug mix_item.mix.slug
+    end
+  end
+
   if @item.abilities.present?
     json.set! :abilities do
       json.array! @item.abilities do |ability|

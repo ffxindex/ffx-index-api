@@ -23,6 +23,11 @@ Rails.application.routes.draw do
       get '/' => 'locations#index', as: :all_locations
       get '/:id' => 'locations#show', as: :one_location
     end
+
+    scope 'mixes' do
+      get '/' => 'mixes#index', as: :all_mixes
+      get '/:id' => 'mixes#show', as: :one_mixes
+    end
   end
 
   %w( 403 404 422 500 503 ).each do |code|
